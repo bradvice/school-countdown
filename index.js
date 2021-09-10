@@ -21,6 +21,18 @@ function move_dvd(dvd, movement) {
   return movement;
 }
 
+function finish() {
+  const main = document.getElementById("timer");
+  main.innerHTML = "RUN!!!";
+  main.style.color = "#ffbb34";
+  main.style.fontSize = "600%";
+  const dvd = document.getElementById("dvd");
+  const movement = [4, 4];
+  for (let i = 0; i < 30000; i++) {
+    setInterval(move_dvd, 10, dvd, movement);
+  }
+}
+
 function print_time(movement) {
   const days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
   const times = [960, 905, 1070, 905, 960];
@@ -35,6 +47,9 @@ function print_time(movement) {
       1000 +
     out * 60;
   const totaltime = ~~(finishtime - new Date().getTime() / 1000);
+  if (totaltime < 0) {
+    finish();
+  }
   const seconds = document.getElementById("secs");
   const minutes = document.getElementById("mins");
   const hours = document.getElementById("hours");
