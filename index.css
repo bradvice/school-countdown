@@ -1,0 +1,37 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+#background {
+  margin: 0;
+  background-image: url(https://img5.goodfon.com/wallpaper/nbig/4/8d/doroga-asfalt-leto.jpg);
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+ul {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  border: 3px #ffbb34 solid;
+  border-radius: 10px;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 40%;
+  height: 30%;
+  top: 30%;
+}
+
+p {
+  color: #ffbb34;
+  font-size: 600%;
+  font-family: Arial, Helvetica, sans-serif;
+}
