@@ -10,10 +10,10 @@ function double_digit(int) {
 function move_dvd(dvd, movement) {
   const dvdrect = dvd.getBoundingClientRect();
   const bodyrect = document.body.getBoundingClientRect();
-  if (dvdrect.top < bodyrect.top || dvdrect.bottom > bodyrect.bottom) {
+  if (dvdrect.top < bodyrect.top || dvdrect.bottom > bodyrect.bottom - 1) {
     movement[0] = -movement[0];
   }
-  if (dvdrect.left < bodyrect.left || dvdrect.right > bodyrect.right) {
+  if (dvdrect.left < bodyrect.left || dvdrect.right > bodyrect.right - 3) {
     movement[1] = -movement[1];
   }
   dvd.style.left = `${dvdrect.left + movement[1]}px`;
@@ -45,7 +45,7 @@ function print_time(movement) {
   console.log(dvd.getBoundingClientRect().top);
   movement = move_dvd(dvd, movement);
   console.log(dvd.getBoundingClientRect().top);
-  setTimeout(print_time, 20, movement);
+  setTimeout(print_time, 10, movement);
 }
 
 window.addEventListener("load", function () {
