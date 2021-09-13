@@ -44,17 +44,12 @@ function reload() {
   min.setAttribute("id", "mins");
   const sec = document.createElement("p");
   sec.setAttribute("id", "secs");
-  const hours = document.createElement("li").appendChild(hour);
-  const semi1 = document.createElement("li").appendChild(semi);
-  const mins = document.createElement("li").appendChild(min);
-  const semi2 = document.createElement("li").appendChild(semi);
-  const secs = document.createElement("li").appendChild(sec);
   const main = document.getElementById("timer");
-  main.appendChild(hours);
-  main.appendChild(semi1);
-  main.appendChild(mins);
-  main.appendChild(semi2);
-  main.appendChild(secs);
+  main.appendChild(hour);
+  main.appendChild(semi);
+  main.appendChild(min);
+  main.appendChild(semi);
+  main.appendChild(sec);
 }
 
 function print_time(movement) {
