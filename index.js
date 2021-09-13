@@ -38,18 +38,19 @@ function finish(movement, time) {
 function reload() {
   const hour = document.createElement("p");
   hour.setAttribute("id", "hours");
-  const semi = document.createElement("p");
-  semi.innerHTML = ":";
-  const semi1 = semi;
+  const semi1 = document.createElement("p");
+  semi1.innerHTML = ":";
+  const semi2 = document.createElement("p");
+  semi2.innerHTML = ":";
   const min = document.createElement("p");
   min.setAttribute("id", "mins");
   const sec = document.createElement("p");
   sec.setAttribute("id", "secs");
   const main = document.getElementById("timer");
   main.appendChild(hour);
-  main.appendChild(semi);
-  main.appendChild(min);
   main.appendChild(semi1);
+  main.appendChild(min);
+  main.appendChild(semi2);
   main.appendChild(sec);
 }
 
@@ -88,6 +89,7 @@ function print_time(movement) {
   if (totaltime > 0) {
     if (!document.getElementById("secs")) {
       reload();
+      console.log("reloading");
     }
     const seconds = document.getElementById("secs");
     const minutes = document.getElementById("mins");
