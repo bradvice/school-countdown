@@ -21,16 +21,40 @@ function move_dvd(dvd, movement) {
   return movement;
 }
 
-function finish() {
+function finish(movement, time) {
+  if (time++ > 3000) {
+    console.log("again");
+    return;
+  }
   const main = document.getElementById("timer");
   main.innerHTML = "RUN!!!";
   main.style.color = "#ffbb34";
   main.style.fontSize = "600%";
   const dvd = document.getElementById("dvd");
-  const movement = [4, 4];
-  for (let i = 0; i < 30000; i++) {
-    setInterval(move_dvd, 10, dvd, movement);
-  }
+  movement = move_dvd(dvd, movement);
+  setTimeout(finish, 5, movement, time);
+}
+
+function reload() {
+  const hour = document.createElement("p");
+  hour.setAttribute("id", "hours");
+  const semi = document.createElement("p");
+  semi.innerHTML = ":";
+  const min = document.createElement("p");
+  min.setAttribute("id", "mins");
+  const sec = document.createElement("p");
+  sec.setAttribute("id", "secs");
+  const hours = document.createElement("li").appendChild(hour);
+  const semi1 = document.createElement("li").appendChild(semi);
+  const mins = document.createElement("li").appendChild(min);
+  const semi2 = document.createElement("li").appendChild(semi);
+  const secs = document.createElement("li").appendChild(sec);
+  const main = document.getElementById("timer");
+  main.appendChild(hours);
+  main.appendChild(semi1);
+  main.appendChild(mins);
+  main.appendChild(semi2);
+  main.appendChild(secs);
 }
 
 function print_time(movement) {
@@ -38,6 +62,15 @@ function print_time(movement) {
   const times = [960, 905, 1070, 905, 960];
   const time = Date();
   const day = time.substr(0, 3);
+  const dvd = document.getElementById("dvd");
+  if (day === "Sat" || day === "Sun") {
+    const main = document.getElementById("timer");
+    main.innerHTML = "See you on Monday ;)";
+    main.style.color = "#ffbb34";
+    main.style.fontSize = "400%";
+    movement = move_dvd(dvd, movement);
+    setTimeout(print_time, 10, movement);
+  }
   const dex = days.indexOf(day);
   const out = times[dex];
   const finishtime =
@@ -53,19 +86,21 @@ function print_time(movement) {
     main.style.color = "#ffbb34";
     main.style.fontSize = "400%";
   }
-  if (totaltime < 0) {
-    finish();
+  if (totaltime < 0 && totaltime > -100) {
+    finish([4, 4], 0);
   }
-  const seconds = document.getElementById("secs");
-  const minutes = document.getElementById("mins");
-  const hours = document.getElementById("hours");
-  seconds.innerHTML = double_digit(totaltime % 60);
-  minutes.innerHTML = double_digit(~~(totaltime / 60) % 60);
-  hours.innerHTML = double_digit(~~(totaltime / 60 / 60));
-  const dvd = document.getElementById("dvd");
-  console.log(dvd.getBoundingClientRect().top);
-  movement = move_dvd(dvd, movement);
-  console.log(dvd.getBoundingClientRect().top);
+  if (totaltime > 0) {
+    if (!document.getElementById("secs")) {
+      reload();
+    }
+    const seconds = document.getElementById("secs");
+    const minutes = document.getElementById("mins");
+    const hours = document.getElementById("hours");
+    seconds.innerHTML = double_digit(totaltime % 60);
+    minutes.innerHTML = double_digit(~~(totaltime / 60) % 60);
+    hours.innerHTML = double_digit(~~(totaltime / 60 / 60));
+    movement = move_dvd(dvd, movement);
+  }
   setTimeout(print_time, 10, movement);
 }
 
