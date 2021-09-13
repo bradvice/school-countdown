@@ -40,6 +40,7 @@ function reload() {
   hour.setAttribute("id", "hours");
   const semi = document.createElement("p");
   semi.innerHTML = ":";
+  const semi1 = semi;
   const min = document.createElement("p");
   min.setAttribute("id", "mins");
   const sec = document.createElement("p");
@@ -48,7 +49,7 @@ function reload() {
   main.appendChild(hour);
   main.appendChild(semi);
   main.appendChild(min);
-  main.appendChild(semi);
+  main.appendChild(semi1);
   main.appendChild(sec);
 }
 
