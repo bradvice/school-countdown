@@ -49,11 +49,11 @@ function print_time(movement) {
   const totaltime = ~~(finishtime - new Date().getTime() / 1000);
   if (totaltime < -100) {
     const main = document.getElementById("timer");
-    main.innerHTML = "See you tomorrow:)";
+    main.innerHTML = "See you tomorrow :)";
     main.style.color = "#ffbb34";
     main.style.fontSize = "400%";
   }
-  if (totaltime < 100000) {
+  if (totaltime < 0) {
     finish();
   }
   const seconds = document.getElementById("secs");
