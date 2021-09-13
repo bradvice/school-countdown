@@ -104,7 +104,22 @@ function print_time(movement) {
   setTimeout(print_time, 10, movement);
 }
 
+function setBackground() {
+  const bgs = [
+    "https://img5.goodfon.com/wallpaper/nbig/4/8d/doroga-asfalt-leto.jpg",
+    "https://i.pinimg.com/originals/f8/13/08/f813080b07496e460f9709ab33f0173d.jpg",
+    "https://img2.wallspic.com/originals/0/4/6/5/5/155640-neon_beleuchtung-purpur-veilchen-visual_effekt_beleuchtung-dreieck-3840x2160.jpg",
+    "https://images6.alphacoders.com/370/370183.jpg",
+  ];
+  const background = document.getElementById("background");
+  const random = Math.floor(Math.random() * bgs.length);
+  console.log(bgs[random]);
+  background.style.backgroundImage = `url(${bgs[random]})`;
+}
+
 window.addEventListener("load", function () {
   let movement = [3, 3];
+  const background = document.getElementById("background");
+  background.addEventListener("click", setBackground);
   print_time(movement);
 });
