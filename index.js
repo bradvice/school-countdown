@@ -40,8 +40,10 @@ function reload() {
   hour.setAttribute("id", "hours");
   const semi1 = document.createElement("p");
   semi1.innerHTML = ":";
+  semi1.setAttribute("id", "semi1");
   const semi2 = document.createElement("p");
   semi2.innerHTML = ":";
+  semi2.setAttribute("id", "semi2");
   const min = document.createElement("p");
   min.setAttribute("id", "mins");
   const sec = document.createElement("p");
