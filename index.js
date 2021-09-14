@@ -117,9 +117,26 @@ function setBackground() {
   background.style.backgroundImage = `url(${bgs[random]})`;
 }
 
+function getRandomColor() {
+  var letters = "0123456789ABCDEF";
+  var color = "#";
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+function setText() {
+  const color = getRandomColor();
+  document.querySelectorAll("p").forEach((e) => (e.style.color = color));
+  document.getElementById("timer").style.borderColor = color;
+}
+
 window.addEventListener("load", function () {
   let movement = [3, 3];
-  const background = document.getElementById("background");
-  background.addEventListener("click", setBackground);
+  const dvd = document.getElementById("dvd");
+  dvd.addEventListener("click", setBackground);
+  const timer = document.getElementById("timer");
+  timer.addEventListener("click", setText);
   print_time(movement);
 });
